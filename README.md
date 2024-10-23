@@ -8,18 +8,23 @@ https://youtu.be/jYlf2gbSums
 
 Follow these steps to set up and run the script csv_replay:
 
-1. Install mujoco.2.2.1: https://github.com/google-deepmind/mujoco/releases/download/2.2.1/mujoco-2.2.1-linux-x86_64.tar.gz
+1. Clone the repository from https://github.com/dtorre38/csv-replay
 
-2. Clone the repository from https://github.com/dtorre38/csv-replay
-
-3. Navigate to the linux directory:
+2. Navigate to the linux directory:
    cd linux_a1_csv_replay
 
-4. Make the csv_replay script executable:
+3. Make the csv_replay script executable:
    chmod +x ./csv_replay
 
-5. Run the csv_replay script:
+4. Run the csv_replay script:
    ./csv_replay
+
+csv_replay script:
+
+make clean
+make
+./slider_size_program data.csv
+./simulate model/a1_arm.xml data.csv
 
 
 # Running csv_replay on macOS
@@ -27,34 +32,33 @@ Follow these steps to set up and run the script csv_replay:
 
 Follow these steps to set up and run the script csv_replay:
 
-1. Navigate to the macos directory:
+1. Clone the repository from https://github.com/dtorre38/csv-replay
+
+2. Navigate to the macos directory:
    cd macos_a1_csv_replay
 
-2. Check the current install name for the MuJoCo dynamic library:
+3. Check the current install name for the MuJoCo dynamic library:
    otool -D /lib/libmujoco.dylib
 
-3. Based on the output of step 2:
+4. Based on the output of step 3:
    - If the output is:
      /lib/libmujoco.2.2.1.dylib:
      @rpath/mujoco.framework/Versions/A/libmujoco.2.2.1.dylib
      
-     Proceed to step 3a.
+      Modify the install name using `install_name_tool`:
+      install_name_tool -id @rpath/libmujoco2.2.1.dylib /lib/libmujoco.2.2.1.dylib
    
    - If the output is:
      /lib/libmujoco.2.2.1.dylib:
      @rpath/libmujoco.2.2.1.dylib
      
-     You can skip to step 4.
+     You can proceed to step 5.
 
-3a. Modify the install name using `install_name_tool`:
-   install_name_tool -id @rpath/libmujoco2.2.1.dylib /lib/libmujoco.2.2.1.dylib
-
-4. Make the csv_replay script executable:
+5. Make the csv_replay script executable:
    chmod +x ./csv_replay
 
-5. Run the csv_replay script:
+6. Run the csv_replay script:
    ./csv_replay
-
 
 csv_replay script:
 
