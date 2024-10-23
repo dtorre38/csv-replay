@@ -7,8 +7,8 @@
 *.lib
 *.out
 *.o
-*.so
-*.so.*
+
+
 
 # Exclude editor config
 .vscode/
