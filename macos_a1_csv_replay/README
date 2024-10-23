@@ -2,27 +2,27 @@
 
 Follow these steps to set up and run the script csv_replay:
 
-1. Navigate to the csv_replay directory:
-   cd csv_replay
+1. Navigate to the macos directory:
+   cd macos_a1_csv_replay
 
 2. Check the current install name for the MuJoCo dynamic library:
-   otool -D ../lib/libmujoco.dylib
+   otool -D /lib/libmujoco.dylib
 
 3. Based on the output of step 2:
    - If the output is:
-     ../lib/libmujoco.2.2.1.dylib:
+     /lib/libmujoco.2.2.1.dylib:
      @rpath/mujoco.framework/Versions/A/libmujoco.2.2.1.dylib
      
      Proceed to step 3a.
    
    - If the output is:
-     ../lib/libmujoco.dylib:
-     @rpath/libmujoco.dylib
+     /lib/libmujoco.2.2.1.dylib:
+     @rpath/libmujoco.2.2.1.dylib
      
      You can skip to step 4.
 
 3a. Modify the install name using `install_name_tool`:
-   install_name_tool -id @rpath/libmujoco2.2.1.dylib ../lib/libmujoco.2.2.1.dylib
+   install_name_tool -id @rpath/libmujoco2.2.1.dylib /lib/libmujoco.2.2.1.dylib
 
 4. Make the csv_replay script executable:
    chmod +x ./csv_replay
@@ -35,5 +35,5 @@ csv_replay script:
 
 make clean
 make
-./slider_size_program
-./simulate ../model/a1_arm.xml
+./slider_size_program data.csv
+./simulate model/a1_arm.xml data.csv
