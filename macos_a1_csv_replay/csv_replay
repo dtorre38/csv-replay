@@ -1,0 +1,6 @@
+#!/bin/bash
+
+make clean
+make
+./slider_size_program data.csv
+./simulate model/a1_arm.xml data.csv
