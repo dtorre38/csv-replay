@@ -8,23 +8,34 @@ https://youtu.be/jYlf2gbSums
 
 Follow these steps to set up and run the script csv_replay:
 
-1. Clone the repository from https://github.com/dtorre38/csv-replay
+1. Clone the repository from `https://github.com/dtorre38/csv-replay` using:
+   ```sh
+   git clone https://github.com/dtorre38/csv-replay
+   ```
 
 2. Navigate to the linux directory:
+   ```sh
    cd linux_a1_csv_replay
+   ```
 
 3. Make the csv_replay script executable:
+   ```sh
    chmod +x ./csv_replay
+   ```
 
 4. Run the csv_replay script:
+   ```sh
    ./csv_replay
+   ```
 
 csv_replay script:
 
+```sh
 make clean
 make
 ./slider_size_program data.csv
 ./simulate model/a1_arm.xml data.csv
+```
 
 
 # Running csv_replay on macOS
@@ -32,40 +43,59 @@ make
 
 Follow these steps to set up and run the script csv_replay:
 
-1. Clone the repository from https://github.com/dtorre38/csv-replay
+1. Clone the repository from `https://github.com/dtorre38/csv-replay` using:
+   ```sh
+   git clone https://github.com/dtorre38/csv-replay
+   ```
 
 2. Navigate to the macos directory:
+   ```sh
    cd macos_a1_csv_replay
+   ```
 
 3. Check the current install name for the MuJoCo dynamic library:
+   ```sh
    otool -D /lib/libmujoco.dylib
+   ```
 
 4. Based on the output of step 3:
    - If the output is:
+      ```sh
      /lib/libmujoco.2.2.1.dylib:
      @rpath/mujoco.framework/Versions/A/libmujoco.2.2.1.dylib
+     ```
      
       Modify the install name using `install_name_tool`:
+      ```sh
       install_name_tool -id @rpath/libmujoco2.2.1.dylib /lib/libmujoco.2.2.1.dylib
+      ```
    
    - If the output is:
+      ```sh
      /lib/libmujoco.2.2.1.dylib:
      @rpath/libmujoco.2.2.1.dylib
+     ```
      
      You can proceed to step 5.
 
 5. Make the csv_replay script executable:
+   ```sh
    chmod +x ./csv_replay
+   ```
 
 6. Run the csv_replay script:
+   ```sh
    ./csv_replay
+   ```
 
 csv_replay script:
 
+```sh
 make clean
 make
 ./slider_size_program data.csv
 ./simulate model/a1_arm.xml data.csv
+```
 
 After Installation
 -----------------
